@@ -99,10 +99,14 @@ class Api {
   }
 }
 
+const jwt = localStorage.getItem('jwt');
+
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-25',
+  // baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-25',
+  baseUrl: process.env.REACT_APP_API_URL,
   headers: {
-    authorization: '1a4ad76b-29b2-4dd1-8dcf-be36c0080f4b',
+    // authorization: '1a4ad76b-29b2-4dd1-8dcf-be36c0080f4b',
+    authorization: jwt,
     'Content-Type': 'application/json'
   }
 });

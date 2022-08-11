@@ -1,4 +1,5 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+// export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = process.env.REACT_APP_API_URL;
 
 export const register = ({ email, password }) => {
   return fetch(`${BASE_URL}/signup`, {
@@ -36,4 +37,4 @@ export const getContent = (token) => {
     .then(checkAnswer);
 }
 
-const checkAnswer = res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.statusText}`)
+const checkAnswer = res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.statusText}`);

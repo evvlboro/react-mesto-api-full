@@ -40,7 +40,7 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
 
     const whatMethondIShouldUseInApi = isLiked ? 'removeLike' : 'setLike';
 
@@ -173,13 +173,15 @@ function App() {
   function handleLogin({ email, password }) {
     auth.authorize(email, password)
       .then(data => {
+
         if (!data) throw new Error('Неверные имя пользователя или пароль')
         if (data.token) {
           setLoggedIn(true);
           auth.getContent(data.token)
             .then(res => {
               if (res) {
-                setUserEmail(res.data.email);
+                console.log(res)
+                setUserEmail(res.email);
               }
             })
           localStorage.setItem('jwt', data.token);
@@ -201,7 +203,7 @@ function App() {
         .then(res => {
           if (res) {
             setLoggedIn(true);
-            setUserEmail(res.data.email);
+            setUserEmail(res.email);
           }
         })
         .catch(err => console.log(err));
