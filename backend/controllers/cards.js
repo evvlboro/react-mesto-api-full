@@ -5,7 +5,7 @@ const WrongOwnerCardError = require('../errors/WrongOwnerCardError');
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.send({ data: cards }))
+    .then((cards) => res.send(cards))
     .catch(next);
 };
 
@@ -14,7 +14,7 @@ module.exports.createCard = (req, res, next) => {
 
   const userId = req.user._id;
   Card.create({ name, link, owner: userId })
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send(card))
     .catch(next);
 };
 
@@ -45,7 +45,7 @@ module.exports.likeCard = (req, res, next) => {
       if (!card) {
         throw new DataNotFoundError('Запрашиваемая карточка не найдена');
       } else {
-        res.send({ data: card });
+        res.send(card);
       }
     })
     .catch(next);
@@ -61,7 +61,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (!card) {
         throw new DataNotFoundError('Запрашиваемая карточка не найдена');
       } else {
-        res.send({ data: card });
+        res.send(card);
       }
     })
     .catch(next);

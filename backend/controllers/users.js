@@ -106,6 +106,6 @@ module.exports.login = (req, res, next) => {
 
 module.exports.getMyUser = (req, res, next) => {
   User.findById(req.user._id)
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch(next);
 };
