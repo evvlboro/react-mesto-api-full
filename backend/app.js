@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { celebrate, Joi, errors } = require('celebrate');
 const DataNotFoundError = require('./errors/DataNotFoundError');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 4000 } = process.env;
 
@@ -16,6 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // для приёма ве�
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
+
+app.use(requestLogger);
 
 const {
   createUser, login,
@@ -48,6 +51,8 @@ app.post(
 app.use(require('./middlewares/auth')); // защита авторизации
 app.use(require('./routes/users'));
 app.use(require('./routes/cards'));
+
+app.use(errorLogger);
 
 app.use(() => {
   throw new DataNotFoundError('Неверный url');
