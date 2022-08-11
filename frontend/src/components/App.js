@@ -112,8 +112,9 @@ function App() {
 
   function handleUpdateUser(data) {
     api.setUserInfo(data.name, data.about)
-      .then((data) => {
-        setCurrentUser(data);
+      .then((userData) => {
+        console.log(data);
+        setCurrentUser(userData);
         closeAllPopups();
       })
       .catch((error) => {
@@ -123,8 +124,8 @@ function App() {
 
   function handleUpdateAvatar(data) {
     api.setAvatar(data.avatar)
-      .then((data) => {
-        setCurrentUser(data);
+      .then((userData) => {
+        setCurrentUser(userData);
         closeAllPopups();
       })
       .catch((error) => {
