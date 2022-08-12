@@ -181,7 +181,6 @@ function App() {
           auth.getContent(data.token)
             .then(res => {
               if (res) {
-                console.log(res)
                 setUserEmail(res.email);
               }
             })
