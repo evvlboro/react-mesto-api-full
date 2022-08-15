@@ -12,12 +12,18 @@ const { PORT = 4000 } = process.env;
 
 const app = express();
 
+const originDev = [
+  'http://localhost',
+  'http://localhost:3000', // dev
+];
+
+const originProd = [
+  'http://mestoapp.evvlboro.nomoredomains.sbs',
+  'https://mestoapp.evvlboro.nomoredomains.sbs',
+];
+
 const corsOptions = {
-  origin: [
-    'http://localhost',
-    'http://localhost:3000', // dev
-    'mestoapp.evvlboro.nomoredomains.sbs',
-  ],
+  origin: process.env.NODE_ENV === 'prodaction' ? originProd : originDev,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
