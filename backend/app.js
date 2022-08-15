@@ -16,6 +16,7 @@ const corsOptions = {
   origin: [
     'http://localhost',
     'http://localhost:3000', // dev
+    'mestoapp.evvlboro.nomoredomains.sbs',
   ],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
