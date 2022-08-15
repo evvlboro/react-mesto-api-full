@@ -23,7 +23,7 @@ const originProd = [
 ];
 
 const corsOptions = {
-  origin: process.env.NODE_ENV === 'prodaction' ? originProd : originDev,
+  origin: process.env.NODE_ENV === 'production' ? originProd : originDev,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
