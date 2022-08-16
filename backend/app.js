@@ -18,7 +18,7 @@ const originDev = [
 ];
 
 const originProd = [
-  'http://mestoapp.evvlboro.nomoredomains.sbs',
+  // 'http://mestoapp.evvlboro.nomoredomains.sbs',
   'https://mestoapp.evvlboro.nomoredomains.sbs',
 ];
 
