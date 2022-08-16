@@ -14,7 +14,11 @@ module.exports = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, process.env.JWT_SECRET);
+    if (process.env.NODE_ENV === 'production') {
+      payload = jwt.verify(token, process.env.JWT_SECRET);
+    } else {
+      payload = jwt.verify(token, 'dev_jwt_secret_key');
+    }
   } catch (err) {
     throw new WrongCredentialsError('Необходима авторизация');
   }
